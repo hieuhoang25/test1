@@ -1,0 +1,415 @@
+<div class="container-fluid" id="main-category">
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="newSize"
+    data-backdrop="static"
+    data-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Thêm mới size</h5>
+          <button
+            type="button"
+            class="close" id="closeSize"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form #frmSize="ngForm">
+            <div class="mb-3">
+              <label for="" class="form-label">Tên size</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="form-control"
+                required
+                minlength="1"
+                maxlength="5"
+               
+                [(ngModel)]="name_size"
+                #name="ngModel"
+              />
+
+              <div
+                *ngIf="name.invalid && (name.dirty || name.touched)"
+                class="alert text-danger"
+              >
+                <div *ngIf="name.errors?.['required']">Vui lòng nhập tên size</div>
+                <div *ngIf="name.errors?.['minlength']">
+                    Tên phải ngắn ít nhất 4 ký tự.
+                </div>
+                <div *ngIf="name.errors?.['maxlength']">
+                    Tên phải ngắn ít nhất 5 ký tự.
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">
+            Thoát
+          </button>
+          <button (click)="addSize()"
+            type="button"
+            class="btn btn-primary"
+          [disabled]="frmSize.invalid"
+          >
+            Lưu
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Page Heading -->
+  <div
+  class="modal fade"
+  id="newColor"
+  data-backdrop="static"
+  data-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Thêm mới Color</h5>
+        <button
+          type="button"
+          class="close" id="closeColor"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #frmColor="ngForm">
+          <div class="mb-3">
+            <label for="" class="form-label">Tên color</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="form-control"
+              required
+             
+              [(ngModel)]="name_color"
+              #namec="ngModel"
+            />
+
+            <div
+              *ngIf="namec.invalid && (namec.dirty || namec.touched)"
+              class="alert text-danger"
+            >
+              <div *ngIf="namec.errors?.['required']">Vui lòng nhập tên color</div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">
+          Thoát
+        </button>
+        <button 
+        (click) = "addColor()"
+          type="button"
+          class="btn btn-primary"
+        [disabled]="frmColor.invalid"
+        >
+          Lưu
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+  <!--  -->
+  <div
+  class="modal fade"
+  id="updateSize"
+  data-backdrop="static"
+  data-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Cập nhật Size</h5>
+        <button
+          type="button"
+          class="close" id="closeSize2"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #frmSize2="ngForm">
+          <div class="mb-3">
+            <label for="" class="form-label">Tên size</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="form-control"
+              required
+              minlength="1"
+              maxlength="5"
+             
+              [(ngModel)]="name_size_update"
+              #name="ngModel"
+            />
+
+            <div
+              *ngIf="name.invalid && (name.dirty || name.touched)"
+              class="alert text-danger"
+            >
+              <div *ngIf="name.errors?.['required']">Vui lòng nhập tên size</div>
+              <div *ngIf="name.errors?.['minlength']">
+                  Tên phải ngắn ít nhất 4 ký tự.
+              </div>
+              <div *ngIf="name.errors?.['maxlength']">
+                  Tên phải ngắn ít nhất 5 ký tự.
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">
+          Thoát
+        </button>
+        <button (click)="updateColor()"
+          type="button"
+          class="btn btn-primary"
+        [disabled]="frmSize2.invalid"
+        >
+          Lưu
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--  -->
+<div
+class="modal fade"
+id="updateColor"
+data-backdrop="static"
+data-keyboard="false"
+tabindex="-1"
+aria-labelledby="staticBackdropLabel"
+aria-hidden="true"
+>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="staticBackdropLabel">Cập nhật Color</h5>
+      <button
+        type="button"
+        class="close" id="closeColor2"
+        data-dismiss="modal"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form #frmColor2="ngForm">
+        <div class="mb-3">
+          <label for="" class="form-label">Tên color</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            class="form-control"
+            required
+           
+            [(ngModel)]="name_color_update"
+            #namec2="ngModel"
+          />
+
+          <div
+            *ngIf="namec2.invalid && (namec2.dirty || namec2.touched)"
+            class="alert text-danger"
+          >
+            <div *ngIf="namec2.errors?.['required']">Vui lòng nhập tên size</div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" data-dismiss="modal">
+        Thoát
+      </button>
+      <button (click)="updateSize()"
+        type="button"
+        class="btn btn-primary"
+      [disabled]="frmColor2.invalid"
+      >
+        Lưu
+      </button>
+    </div>
+  </div>
+</div>
+</div>
+<!--  -->
+
+  <div class="row">
+    <div class="col-lg-6">
+      <!-- Circle Buttons -->
+      <div class="card shadow mb-4">
+        <div
+          class="card-header py-3 d-flex align-items-center justify-content-between"
+        >
+          <h6 class="m-0 font-weight-bold text-primary">Category</h6>
+          <button type="button" class="btn btn-info btn-circle mx-1">
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+        <div class="card-body">
+          <table class="table text-center">
+            <thead>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Product Styles</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let c of categories">
+                <th scope="row">{{ c.idCategory }}</th>
+                <td>{{ c.nameCategory }}</td>
+                <td>
+                  <span *ngFor="let ps of c.productStyles">
+                    {{ ps.nameProductStyle }},
+                  </span>
+                </td>
+                <td>
+                  <a
+                    routerLink="/workspace/products/"
+                    class="btn btn-primary btn-circle mx-1"
+                  >
+                    <i class="fas fa-eye"></i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Brand Buttons -->
+    </div>
+    <div class="col-lg-6">
+      <div class="card shadow mb-4">
+        <div
+          class="card-header py-3 d-flex align-items-center justify-content-between"
+        >
+          <h6 class="m-0 font-weight-bold text-primary">Size</h6>
+          <button
+            (click)="showModal('newSize', null)"
+            type="button"
+            class="btn btn-info btn-circle mx-1"
+          >
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+        <div class="card-body">
+          <table class="table text-center">
+            <thead>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let s of sizes">
+                <th scope="row">{{ s.idSize }}</th>
+                <td>{{ s.nameSize }}</td>
+                <td>
+                    <button
+                  (click)="deleteSize(s.idSize)"
+                  type="button"
+                  class="btn btn-danger btn-circle mx-1"
+                >
+                  <i class="fas fa-trash"></i>
+                </button>
+                    <button
+                  (click)="showModal('updateSize', s)"
+                  type="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#staticBackdrop"
+                  class="btn btn-primary btn-circle mx-1"
+                >
+                  <i class="fas fa-pen"></i>
+                </button>
+                </td>
+                
+
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card shadow mb-4">
+        <div
+          class="card-header py-3 d-flex align-items-center justify-content-between"
+        >
+          <h6 class="m-0 font-weight-bold text-primary">Color</h6>
+          <button type="button" class="btn btn-info btn-circle mx-1" (click)="showModal('newColor',null)">
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+        <div class="card-body">
+          <table class="table text-center">
+            <thead>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Action</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let c of colors">
+                <td scope="row">{{ c.idColor }}</td>
+                <td>{{ c.nameColor }}</td>
+                <td>
+                  <button
+                  (click) = "deleteColor(c.idColor)"
+                type="button"
+                class="btn btn-danger btn-circle mx-1"
+              >
+                <i class="fas fa-trash"></i>
+              </button>
+                  <button
+                (click)="showModal('updateColor',c)"
+                type="button"
+                class="btn btn-primary btn-circle mx-1"
+              >
+                <i class="fas fa-pen"></i>
+              </button>
+              </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

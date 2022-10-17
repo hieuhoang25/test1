@@ -1,0 +1,85 @@
+
+<div class="container-fluid d-none" id="product_details" >
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" title="Double to remove image" width="150px" [src]="urlImage(product.productPhoto)">
+                    
+                    <div class="up">
+
+                       
+                
+                        <div class="file-search-button">
+                          <label for="file-upload" class="custom-file-upload">
+                            <i class="fas fa-upload"></i> Choose a file
+                          </label>
+                          <input id="file-upload" type="file"/>
+                        </div>
+                    </div>
+                  
+                </div>
+            </div>
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Product Details</h4>
+                    </div>
+                   
+                    <div class="row mt-3">
+                        <div class="col-md-12"><label class="labels">Name</label><input type="text" class="form-control" placeholder="enter phone number" [value]="product.nameProduct"></div>
+                        <div class="col-md-12"><label class="labels">Price</label><input type="number" class="form-control" placeholder="enter address line 1" [value]="product.price"></div>
+                        <div class="col-md-12"><label class="labels">Created Date</label><input  class="form-control" placeholder="enter address line 2" [(ngModel)]="product.createDate"  type="datetime-local"></div>
+                        <div class="form-group col-md-12">
+                            <label for="exampleFormControlSelect1">Category</label>
+                            <select class="form-control" id="exampleFormControlSelect1" [(ngModel)] ="id_category" (change)="showProductCategory()">
+                              <option *ngFor="let category of categories"  [value]="category.idCategory">
+                                {{category.nameCategory}}
+                              </option>
+                              
+                            </select>
+                            
+                          </div>
+                          <div class="form-group col-md-12">
+                            <label for="exampleFormControlSelect1">Product Style</label>
+                            <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="id_product_style">
+                              <option *ngFor="let ps of category.productStyles"  [value]="ps.idProductStyle">
+                                {{ps.nameProductStyle}}
+                              </option>
+                              
+                            </select>
+                          </div>
+                        <div class="col-md-12"><label class="labels">Description</label><textarea class="form-control" name="" id="" rows="3" [value]="product.description" placeholder="Description"></textarea></div>
+                            
+                    </div>
+                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="py-3">
+                    <div class="d-flex justify-content-between align-items-center experience"><span>Size</span></div><br>
+                    <div class="col-md-12"><label class="labels">Experience in Designing</label><input type="text" class="form-control" placeholder="experience" value=""></div> <br>
+                    <div class="col-md-12"><label class="labels">Additional Details</label><input type="text" class="form-control" placeholder="additional details" value=""></div>
+                </div>
+                <div class="py-3">
+                    <div class="d-flex justify-content-between align-items-center experience"><span>Color</span></div><br>
+                    <div class="col-md-12"><label class="labels">Experience in Designing</label><input type="text" class="form-control" placeholder="experience" value=""></div> <br>
+                    <div class="col-md-12"><label class="labels">Additional Details</label><input type="text" class="form-control" placeholder="additional details" value=""></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid d-none " id="notfound_product">
+    <div class="container rounded bg-white mt-5 mb-5 ">
+
+    <!-- 404 Error Text -->
+    <div class="text-center px-5 py-5">
+        <div class="error mx-auto" data-text="404">404</div>
+        <p class="lead text-gray-800 mb-5">Product Not Found</p>
+        <p class="text-gray-500 mb-0">It looks like you found a glitch in the matrix...</p>
+        <a href="/workspace/products">&larr; Back to List Product</a>
+    </div>
+    </div>
+</div>

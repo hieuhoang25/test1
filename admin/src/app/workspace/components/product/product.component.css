@@ -1,0 +1,6 @@
+ngb-pagination li:first-child a span {
+    display: none;
+}
+ngb-pagination li:first-child a:before {
+   /* provide your content here */
+}

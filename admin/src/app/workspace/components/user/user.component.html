@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Product</h1>
+  
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+      <div
+        class="card-header py-3 d-flex align-items-center justify-content-between"
+      >
+        <div class="d-flex align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary mx-2">DataTables</h6>
+          
+        </div>
+  
+        <button type="button" class="btn btn-info btn-circle mx-1">
+          <i class="fas fa-plus"></i>
+        </button>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table
+            class="table table-bordered text-center align-center"
+            id="dataTable"
+            width="100%"
+            cellspacing="0"
+          >
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Fullname</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Role</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let u of users">
+                    <td>{{u.username}}</td>
+                    <td>{{u.fullname}}</td>
+                    <td>{{u.email}}</td>
+                    <td>{{u.phone}}</td>
+                    <td>{{u.roleNames}}</td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  
